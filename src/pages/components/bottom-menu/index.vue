@@ -33,7 +33,7 @@
 	      </router-link>
 	    </li>
 	    <li class="item">
-	      <router-link to="/search" class="flex2 aic f20 text" active-class="active">
+	      <router-link to="/userCenter" class="flex2 aic f20 text" active-class="active">
 	        <van-icon class="text" name="user-o"></van-icon>
 	        <p class="mt-5 text f12">我的</p>
 	      </router-link>

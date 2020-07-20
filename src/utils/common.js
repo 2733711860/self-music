@@ -506,8 +506,10 @@ export function getDays(date1, date2) {
 * @param endTime 结束时间
 * @returns 例：剩余时间1天 16小时 45 分钟41 秒
 */
-export function getEndTime(endTime){
-	var startDate=new Date(); //开始时间，当前时间
+export function getEndTime(endTime, startDate){
+	if (!startDate) {
+		startDate=new Date(); //开始时间，当前时间
+	}
 	var endDate=new Date(endTime); //结束时间，需传入时间参数
 	var t=endDate.getTime()-startDate.getTime(); //时间差的毫秒数
 	var d=0,h=0,m=0,s=0;
@@ -516,9 +518,27 @@ export function getEndTime(endTime){
 		h=Math.floor(t/1000/60/60%24);
 		m=Math.floor(t/1000/60%60);
 		s=Math.floor(t/1000%60);
-		return "剩余时间"+d+"天 "+h+"小时 "+m+" 分钟"+s+" 秒";
+		return d+"天"+h+"小时 "+m+"分钟"+s+"秒";
 	} else {
 		return '时间已到';
+	}
+}
+
+export function getEndTime2(endTime, startDate){
+	if (!startDate) {
+		startDate=new Date(); //开始时间，当前时间
+	}
+	var endDate=new Date(endTime); //结束时间，需传入时间参数
+	var t=endDate.getTime()-startDate.getTime(); //时间差的毫秒数
+	var days=0,hours=0,minutes=0,seconds=0;
+	if(t>=0){
+		days=Math.floor(t/1000/3600/24);
+		hours=Math.floor(t/1000/60/60%24) < 10 ? ('0' + Math.floor(t/1000/60/60%24)) : Math.floor(t/1000/60/60%24);
+		minutes=Math.floor(t/1000/60%60) < 10 ? ('0' + Math.floor(t/1000/60%60)) : Math.floor(t/1000/60%60);
+		seconds=Math.floor(t/1000%60) < 10 ? ('0' + Math.floor(t/1000%60)) : Math.floor(t/1000%60);
+		return {
+			days, hours, minutes, seconds
+		};
 	}
 }
 
@@ -968,45 +988,45 @@ export function breadthQuery(tree, id) { // 递归遍历树
 
 function addWan(integer, number, mutiple, decimalDigit) {
     var me = this;
-    var digit = getDigit(integer); 
-    if (digit > 3) { 
-        var remainder = digit % 8; 
+    var digit = getDigit(integer);
+    if (digit > 3) {
+        var remainder = digit % 8;
             if (remainder >= 5) { // ‘十万’、‘百万’、‘千万’显示为‘万’
-            remainder = 4; 
-        } 
-        return Math.round(number / Math.pow(10, remainder + mutiple - decimalDigit)) / Math.pow(10, decimalDigit) + '万'; 
-    } else { 
-        return Math.round(number / Math.pow(10, mutiple - decimalDigit)) / Math.pow(10, decimalDigit); 
-    } 
+            remainder = 4;
+        }
+        return Math.round(number / Math.pow(10, remainder + mutiple - decimalDigit)) / Math.pow(10, decimalDigit) + '万';
+    } else {
+        return Math.round(number / Math.pow(10, mutiple - decimalDigit)) / Math.pow(10, decimalDigit);
+    }
 }
-function getDigit(integer) { 
-    var digit = -1; 
-    while (integer >= 1) { 
-        digit++; 
-        integer = integer / 10; 
-    } 
-    return digit; 
+function getDigit(integer) {
+    var digit = -1;
+    while (integer >= 1) {
+        digit++;
+        integer = integer / 10;
+    }
+    return digit;
 }
 export function addChineseUnit(number, decimalDigit) { // 数字添加单位
     var me = this;
-    decimalDigit = decimalDigit == null ? 2 : decimalDigit; 
-    var integer = Math.floor(number); 
-    var digit = getDigit(integer);; 
+    decimalDigit = decimalDigit == null ? 2 : decimalDigit;
+    var integer = Math.floor(number);
+    var digit = getDigit(integer);;
     // ['个', '十', '百', '千', '万', '十万', '百万', '千万'];
-    var unit = []; 
-    if (digit > 3) { 
-        var multiple = Math.floor(digit / 8); 
-        if (multiple >= 1) { 
-            var tmp = Math.round(integer / Math.pow(10, 8 * multiple)); 
-            unit.push(addWan(tmp, number, 8 * multiple, decimalDigit)); 
-            for (var i = 0; i < multiple; i++) { 
-                unit.push('亿'); 
-            } 
-            return unit.join(''); 
-        } else { 
-            return addWan(integer, number, 0, decimalDigit); 
-        } 
-    } else { 
-        return number; 
-    } 
+    var unit = [];
+    if (digit > 3) {
+        var multiple = Math.floor(digit / 8);
+        if (multiple >= 1) {
+            var tmp = Math.round(integer / Math.pow(10, 8 * multiple));
+            unit.push(addWan(tmp, number, 8 * multiple, decimalDigit));
+            for (var i = 0; i < multiple; i++) {
+                unit.push('亿');
+            }
+            return unit.join('');
+        } else {
+            return addWan(integer, number, 0, decimalDigit);
+        }
+    } else {
+        return number;
+    }
 }

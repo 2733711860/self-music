@@ -41,7 +41,7 @@ axios.interceptors.response.use(
 
 export function get(url,params={}){
   return new Promise((resolve,reject) => {
-    axios.get(url, { params:params }, config)
+    axios.get(url, { params:params }, {headers: {cookie: localStorage.getItem('cookie')}})
 	    .then(response => {
 	      resolve(response.data);
 	    })

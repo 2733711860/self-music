@@ -53,8 +53,17 @@ export default [
       title: '音乐列表',
       menuPlayer: false
     }
-  },
-  {
+  }, {
+    path: '/userCenter',
+    name: 'userCenter',
+    component: resolve => {
+      require(['@/pages/user-center'], resolve)
+    },
+    meta: {
+      title: '用户中心',
+      menuPlayer: true
+    }
+  }, {
     path: '/singer',
     name: 'singer',
     component: resolve => {

@@ -46,4 +46,11 @@ export default {
   getSingerSong: baseUrl + '/artists', // 歌手单曲
   getSingerMv: baseUrl + '/artist/mv', // 歌手MV
   getSingerAlbum: baseUrl + '/artist/album', // 歌手专辑
+
+  likelist: baseUrl + '/likelist', // 喜欢音乐列表
+  like: baseUrl + '/like', // 喜欢音乐
+  login: baseUrl + '/login/cellphone', // 手机登陆
+  getUserDetail: baseUrl + '/user/detail', // 用户详情
+  getUserSubcount: baseUrl + '/user/subcount', // 用户信息 , 歌单，收藏，mv, dj 数量
+  getUserPlaylist: baseUrl + '/user/playlist', // 用户歌单
 }
