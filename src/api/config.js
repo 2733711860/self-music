@@ -6,7 +6,7 @@ export default {
   timeout: 50000,
   emulateJSON: true,
 
-  withCredentials: false,
+  withCredentials: true,
   // Access-Control-Allow-Credentials: true
   // withCredentials: true,
 

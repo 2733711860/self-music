@@ -80,14 +80,13 @@ export default {
 			await this.$get(this.$api.login, {phone: '18356010272', password: 'mwd18356010272'}).then(async data => {
 				this.users = data.profile
 				this.getUserPlaylist(data.account.id)
-				localStorage.setItem('cookie', data.cookie);
 	    })
 		},
 
 		async getUserPlaylist (uid) { // 用户详情
 			await this.$get(this.$api.getUserPlaylist, {uid: uid}).then(async data => {
 				this.sheetList = data.playlist
-//				this.getUserSubcount()
+				this.getUserSubcount()
 	    })
 		},
 

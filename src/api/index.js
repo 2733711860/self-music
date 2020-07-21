@@ -50,6 +50,8 @@ export default {
   likelist: baseUrl + '/likelist', // 喜欢音乐列表
   like: baseUrl + '/like', // 喜欢音乐
   login: baseUrl + '/login/cellphone', // 手机登陆
+  mailLogin: baseUrl + '/login', // 邮箱登陆
+  loginState: baseUrl + '/login/status', // 登录状态
   getUserDetail: baseUrl + '/user/detail', // 用户详情
   getUserSubcount: baseUrl + '/user/subcount', // 用户信息 , 歌单，收藏，mv, dj 数量
   getUserPlaylist: baseUrl + '/user/playlist', // 用户歌单

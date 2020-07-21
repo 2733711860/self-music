@@ -1,6 +1,5 @@
 import axios from 'axios';
 import config from './config'
-
 //http request 拦截器
 axios.interceptors.request.use(
   config => {
@@ -41,7 +40,8 @@ axios.interceptors.response.use(
 
 export function get(url,params={}){
   return new Promise((resolve,reject) => {
-    axios.get(url, { params:params }, {headers: {cookie: localStorage.getItem('cookie')}})
+  	axios.defaults.withCredentials = true
+    axios.get(url, { params:params }, config)
 	    .then(response => {
 	      resolve(response.data);
 	    })

@@ -9,6 +9,7 @@ module.exports = {
   devServer: {
   	open: true,
   	port: 8080,
+  	proxy: '',
     // 代理
 //  proxy: {
       // 只要请求地址有'api'都会匹配上

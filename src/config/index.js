@@ -5,7 +5,8 @@ export default {
   title: 'demo',
 
   baseUrl: {  //  吉意保的请求路径
-    dev: 'https://api.mtnhao.com',
+//  dev: 'https://api.mtnhao.com',
+		dev: 'http://localhost:3000',
     tes: 'https://tweixin.jxlife.com.cn/pre-jiyibaojr/com.ifp.ipartner/',
     pro: 'https://tjxw.jxlife.com.cn/com.ifp.ipartner/' // 'https://weixin.jxlife.com.cn/jiyibaojr/com.ifp.ipartner/'
   }
