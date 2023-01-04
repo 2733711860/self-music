@@ -28,9 +28,9 @@
     "vuex-persistedstate": "^2.7.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
     "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
+    "@vue/cli-service": "^5.0.8",
     "amfe-flexible": "^2.2.1",
     "autoprefixer": "^9.5.1",
     "axios": "^0.18.0",
